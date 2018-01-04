@@ -80,10 +80,6 @@ public class DisplayManager {
         // creates the GLCapabilities instance and makes the OpenGL
         // bindings available for use.
         GL.createCapabilities();
-
-        // Set the clear color
-        glClearColor(1.0f, 0.0f, 0.0f, 0.0f);
-
     }
 
     public static void closeDisplay() {
@@ -101,8 +97,6 @@ public class DisplayManager {
     }
 
     public static void updateDisplay() {
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // clear the framebuffer
-
         glfwSwapBuffers(window); // swap the color buffers
 
         // Poll for window events. The key callback above will only be
