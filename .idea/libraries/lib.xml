@@ -111,6 +111,7 @@
       <root url="jar://$PROJECT_DIR$/lib/lwjgl-zstd.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/lwjgl.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/steamworks4j-1.6.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/joml-1.9.7.jar!/" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$PROJECT_DIR$/lib/lwjgl-assimp-javadoc.jar!/" />

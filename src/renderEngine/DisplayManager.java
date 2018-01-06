@@ -35,6 +35,10 @@ public class DisplayManager {
         glfwDefaultWindowHints(); // optional, the current window hints are already the default
         glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE); // the window will stay hidden after creation
         glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE); // the window will be resizable
+        glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
+        glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
+        glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+        glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GLFW_TRUE);
 
         // Create the window
         window = glfwCreateWindow(WIDTH, HEIGHT, "My Game!", NULL, NULL);
@@ -80,6 +84,9 @@ public class DisplayManager {
         // creates the GLCapabilities instance and makes the OpenGL
         // bindings available for use.
         GL.createCapabilities();
+
+        // Output version of OpenGL used
+        System.out.println(glGetString(GL_VERSION));
     }
 
     public static void closeDisplay() {

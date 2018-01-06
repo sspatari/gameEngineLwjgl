@@ -1,6 +1,8 @@
 package engineTester;
 
+import entities.Entity;
 import models.TexturedModel;
+import org.joml.Vector3f;
 import renderEngine.DisplayManager;
 import renderEngine.Loader;
 import models.RawModel;
@@ -40,15 +42,16 @@ public class MainGameLoop {
 
         RawModel model = loader.loadToVAO(vertices, textureCoords, indices);
         ModelTexture texture = new ModelTexture(loader.loadTexture("image1"));
-        TexturedModel texturedModel = new TexturedModel(model, texture);
-
+        TexturedModel staticModel = new TexturedModel(model, texture);
+        Entity entity = new Entity(staticModel, new Vector3f(-1, 0, 0),
+                0, 0, 0, 1);
         // Run the rendering loop until the user has attempted to close
         // the window or has pressed the ESCAPE key.
         while(!DisplayManager.isCloseRequested()) {
             renderer.prepare();
             //game logic
             shader.start();
-            renderer.render(texturedModel);
+            renderer.render(entity, shader);
             shader.stop();
 
             DisplayManager.updateDisplay();
