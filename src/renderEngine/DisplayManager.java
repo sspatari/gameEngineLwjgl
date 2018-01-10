@@ -46,10 +46,11 @@ public class DisplayManager {
             throw new RuntimeException("Failed to create the GLFW window");
 
         // Setup a key callback. It will be called every time a key is pressed, repeated or released.
-        glfwSetKeyCallback(window, (window, key, scancode, action, mods) -> {
-            if ( key == GLFW_KEY_ESCAPE && action == GLFW_RELEASE )
-                glfwSetWindowShouldClose(window, true); // We will detect this in the rendering loop
-        });
+//        glfwSetKeyCallback(window, (window, key, scancode, action, mods) -> {
+//            if ( key == GLFW_KEY_ESCAPE && action == GLFW_RELEASE )
+//                glfwSetWindowShouldClose(window, true); // We will detect this in the rendering loop
+//        });
+        glfwSetKeyCallback(window, new KeyboardHandler());
 
         // Get the thread stack and push a new frame
         try ( MemoryStack stack = stackPush() ) {
@@ -104,10 +105,16 @@ public class DisplayManager {
     }
 
     public static void updateDisplay() {
+        if (KeyboardHandler.isKeyDown(GLFW_KEY_ESCAPE) ) {
+            glfwSetWindowShouldClose(window, true);
+        }
         glfwSwapBuffers(window); // swap the color buffers
-
         // Poll for window events. The key callback above will only be
         // invoked during this call.
         glfwPollEvents();
+    }
+
+    public static long getWindow() {
+        return window;
     }
 }
