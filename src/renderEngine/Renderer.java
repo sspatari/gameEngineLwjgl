@@ -34,8 +34,9 @@ public class Renderer {
     }
 
     public void prepare() {
-        // Set the clear color
+        // Do depth comparisons and update the depth buffer.
         GL11.glEnable(GL11.GL_DEPTH_TEST);
+        // Set the clear color
         GL11.glClearColor(1, 0, 0, 1);
         // Clear the framebuffer
         GL11.glClear(GL11.GL_COLOR_BUFFER_BIT | GL11.GL_DEPTH_BUFFER_BIT);
