@@ -22,17 +22,16 @@ public class MainGameLoop {
         Renderer renderer = new Renderer(shader);
 
         // OpenGL expects vertices to be defined counter clockwise by default
-
-
         RawModel model = OBJLoader.loadObjModel("DragonBlender", loader);
 
-        ModelTexture texture = new ModelTexture(loader.loadTexture("DragonWhiteTexture"));
+        TexturedModel staticModel = new TexturedModel(model, new ModelTexture(loader.loadTexture("DragonVioletTexture")));
+        ModelTexture texture = staticModel.getTexture();
+        texture.setShineDamper(10);
+        texture.setReflectivity(1);
 
-        TexturedModel staticModel = new TexturedModel(model, texture);
-
-        Entity entity = new Entity(staticModel, new Vector3f(0, 0, -25),
+        Entity entity = new Entity(staticModel, new Vector3f(0, -5, -25),
                 0, 0, 0, 1);
-        Light light = new Light(new Vector3f(0, 0, -20), new Vector3f(1, 1, 1));
+        Light light = new Light(new Vector3f(200, 200, -100), new Vector3f(1, 1, 1));
 
         Camera camera = new Camera();
 
