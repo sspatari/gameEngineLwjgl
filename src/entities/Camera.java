@@ -7,8 +7,8 @@ import renderEngine.KeyboardHandler;
 import static org.lwjgl.glfw.GLFW.*;
 
 public class Camera {
-    private Vector3f position = new Vector3f(0, 0, 0);
-    private float pitch; //HEIGHT or LOW
+    private Vector3f position = new Vector3f(0, 5, 0);
+    private float pitch = 10; //HEIGHT or LOW
     private float yaw;   //LEFT or RIGHT
     private float roll;  //How much it's tillted
 
@@ -16,16 +16,22 @@ public class Camera {
 
     public void move() {
         if(KeyboardHandler.isKeyDown(GLFW_KEY_W)) {
-            position.z -= 2f;
+            position.z -= 0.2f;
         }
         if(KeyboardHandler.isKeyDown(GLFW_KEY_S)) {
-            position.z += 2f;
+            position.z += 0.2f;
         }
         if(KeyboardHandler.isKeyDown(GLFW_KEY_D)) {
-            position.x += 2f;
+            position.x += 0.2f;
         }
         if(KeyboardHandler.isKeyDown(GLFW_KEY_A)) {
-            position.x -= 2f;
+            position.x -= 0.2f;
+        }
+        if(KeyboardHandler.isKeyDown(GLFW_KEY_LEFT_SHIFT)) {
+            position.y -= 0.2f;
+        }
+        if(KeyboardHandler.isKeyDown(GLFW_KEY_SPACE)) {
+            position.y += 0.2f;
         }
     }
 
